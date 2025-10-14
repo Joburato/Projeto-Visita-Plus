@@ -1,0 +1,35 @@
+{% extends 'template.html' %}
+
+{% block title %}Detalhes de {{ cliente.nome }}{% endblock %}
+
+{% block content %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Informações do Cliente</h6>
+    </div>
+    <div class="card-body">
+        <h4>{{ cliente.nome }}</h4>
+        <p><strong>Empresa:</strong> {{ cliente.empresa|default:"Não informado" }}</p>
+        <p><strong>Email:</strong> {{ cliente.email|default:"Não informado" }}</p>
+        <p><strong>Telefone:</strong> {{ cliente.telefone|default:"Não informado" }}</p>
+        <p><strong>Endereço:</strong> {{ cliente.endereco|default:"Não informado" }}</p>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Histórico de Visitas</h6>
+    </div>
+    <div class="card-body">
+        {% for visita in visitas %}
+            <div class="alert alert-info">
+                <p><strong>Data:</strong> {{ visita.data_visita|date:"d/m/Y H:i" }}</p>
+                <p><strong>Anotações:</strong> {{ visita.anotacoes|linebreaks }}</p>
+                <small class="text-muted">Realizada por: {{ visita.closer.username }}</small>
+            </div>
+        {% empty %}
+            <p>Nenhuma visita registrada para este cliente.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'template.html' %}
+{% load split %}
+
+    
+    {% block title %}
+        Histórico visitas
+    {% endblock %} 
+    
+    
+    {% block content %}
+        <div class="row">
+            {% for visita in visitas %}
+                <div class="col-lg-4">
+                    <div class="card shadow mb-4">
+                        <a href="#collapseCardExample{{visita.id}}" class="d-block card-header py-3" data-toggle="collapse"
+                            role="button" aria-expanded="true" aria-controls="collapseCardExample{{visita.id}}">
+                            <h6 class="m-0 font-weight-bold text-primary">{{ visita.titulo }}</h6>
+                        </a>
+                        <div class="collapse" id="collapseCardExample{{visita.id}}">
+                            <div class="card-body">
+                                {% with visita.conteudo|split:"<hr/>" as details %}
+                                    {% for p in details %}
+                                    <p>{{ p }}</p>
+                                    {% endfor %}
+                                {% endwith %} 
+                            </div>
+                        </div>
+                        <div class="d-block card-footer py-3 text-right" >
+                            Por {{ visita.responsavel.username }} em {{ visita.data|date:'d-m-Y H:i'  }}
+                        </div>
+                     </a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    {% endblock  %}
+
+    {% block dependencias %}
+
+    <script>
+   
+       
+    </script>
+
+    {%endblock %}

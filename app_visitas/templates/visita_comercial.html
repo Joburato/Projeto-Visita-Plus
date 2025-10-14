@@ -1,0 +1,699 @@
+{% extends 'template.html' %}
+{% load static %}
+    
+    {% block title %}Nova visita{% endblock %}
+    
+   
+    
+    {% block content %}
+    <div class="card shadow mb-4">
+        <div
+            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Formulário de novas visitas comerciais</h6>
+        </div>
+        <div class="card-body">
+            {% csrf_token %}  <div class="form">
+            <div class="form"> 
+                <div class="form-group mt-2">
+                    <label for="cards">Cliente:</label> <select class="form-control" id="cards">
+                        <option value="">Selecione um cliente</option>
+                        {% for card in cards %}
+                            <option value="{{ card.id }}">{{ card.nome }} - {{ card.empresa }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="info-gerais">Informações gerais:</label>
+                    <textarea class="form-control" id="info_gerais" rows="3"></textarea>
+                </div>
+                <div class="tipos-formularios">
+                    <p class="alert alert-primary mt-3 mb-2">Selecione apenas os sistemas que são assunto da visita.
+                     </p>
+                    <ul class="d-flex flex-column">
+                        <li class="p-3 op-form" id="btn-CA" target="CA">Controle de acesso</li>
+                        <li class="p-3 op-form mt-2" id="btn-CFTV" target="CFTV">Sistema CFTV </li>
+                        <li class="p-3 op-form mt-2" id="btn-REDES" target="REDES">Redes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" id="panel-CA">
+                <a href="#CA" class="d-block card-header py-3" data-toggle="collapse"
+                role="button" aria-expanded="true" aria-controls="collapseCardExample{{demanda.id}}">
+                    <h6 class="m-0 font-weight-bold text-primary">Controle de acesso</h6>
+                </a>
+                <div class="collapse" id="CA">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="prestadora_CA">Quem é a prestadora atual?</label>
+                            <input class="form-control" id="prestadora_CA" type="text"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="prestadora_CA_tempo">Há quantos anos lá?</label>
+                            <input class="form-control" id="prestadora_CA_tempo" type="number"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="quant_saidas_vei">Quantas são as entradas de veículos?</label>
+                            <input class="form-control" id="quant_entradas_vei" type="number"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="desc-CA">Como é feito o acesso de veículos hoje?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="acesso_veiculos" id="radio1" value="Antena TAG" checked>
+                                <label class="form-check-label" for="radio1">
+                                    Antena TAG
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="acesso_veiculos" id="radio2" value="Controle Remoto">
+                                <label class="form-check-label" for="radio2">
+                                    Controle Remoto
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="acesso_veiculos" id="radio3" value="Manual">
+                                <label class="form-check-label" for="radio3">
+                                    Manual
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="acesso_veiculos" id="radio4" value="LPR">
+                                <label class="form-check-label" for="radio4">
+                                    LPR
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="prestadora-CA-vei">Quantas são as saídas de veículos?</label>
+                            <input class="form-control" id="quant_saidas_vei" type="number"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="desc-CA">Como é feito a saída de veículos?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="saida_veiculos" id="radio5" value="Antena TAG" checked>
+                                <label class="form-check-label" for="radio5">
+                                    Antena TAG
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="saida_veiculos" id="radio6" value="Controle Remoto">
+                                <label class="form-check-label" for="radio6">
+                                    Controle Remoto
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="saida_veiculos" id="radio7" value="Manual">
+                                <label class="form-check-label" for="radio7">
+                                    Manual
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="saida_veiculos" id="radio8" value="LPR">
+                                <label class="form-check-label" for="radio8">
+                                    LPR
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="saida_veiculos" id="radio9" value="Laço indutivo">
+                                <label class="form-check-label" for="radio9">
+                                    Laço indutivo
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="quant_entradas_ped">Quantas são as entradas de pedestres moradores?</label>
+                            <input class="form-control" id="quant_entradas_ped" type="number"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="desc-CA">Como é feito a entrada de pedestres moradores?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="acesso_pedestres" id="radio10" value="Terminal Facial" >
+                                <label class="form-check-label" for="radio10">
+                                    Terminal Facial
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="acesso_pedestres" id="radio11" value="Biometria">
+                                <label class="form-check-label" for="radio11">
+                                    Biometria
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="acesso_pedestres" id="radio12" value="Manual">
+                                <label class="form-check-label" for="radio12">
+                                    Manual
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="acesso_pedestres" id="radio13" value="Chaveiro TAG">
+                                <label class="form-check-label" for="radio13">
+                                    Chaveiro TAG
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="quant_saidas_ped">Quantas são as saídas de pedestres visitantes?</label>
+                            <input class="form-control" id="quant_saidas_ped" type="number"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="desc-CA">Como é feito a saída de pedestres visitantes?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="saida_pedestres" id="radio14" value="Terminal Facial">
+                                <label class="form-check-label" for="radio14">
+                                    Terminal Facial identificando
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="saida_pedestres" id="radio15" value="Identificação na portaria">
+                                <label class="form-check-label" for="radio15">
+                                    Identificação na portaria
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="saida_pedestres" id="radio32" value="Botoeira">
+                                <label class="form-check-label" for="radio32">
+                                    Botoeira
+                                </label>
+                            </div>
+                        </div>
+                        <hr/>
+                        <h3 class="text-center">
+                            Projetos
+                        </h3>
+                        <div class="text-center mt-2">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Adicionar projeto</button>
+                        </div>
+                        <div class="d-flex justify-content-center flex-wrap" id="projetos_CA">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="desc-CA">Mais detalhes:</label>
+                            <textarea class="form-control" id="detalhes_CA" rows="3"></textarea>
+                        </div>    
+                    </div>
+                </div>
+
+            
+            </div>
+            <div class="card" id="panel-CFTV">
+                <a href="#CFTV" class="d-block card-header py-3" data-toggle="collapse"
+                role="button" aria-expanded="true" aria-controls="collapseCardExample{{demanda.id}}">
+                    <h6 class="m-0 font-weight-bold text-primary">CFTV</h6>
+                </a>
+                <div class="collapse card-body" id="CFTV">
+                    <div class="form-group">
+                        <label for="prestadora_CFTV">Prestadora atual:</label>
+                        <input class="form-control" id="prestadora_CFTV" type="text"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="prestadora_CFTV_tempo">Há quantos anos lá?</label>
+                        <input class="form-control" id="prestadora_CFTV_tempo" type="number"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantidade_cameras">Quantas câmeras atualmente?</label>
+                        <input class="form-control" id="quantidade_cameras" type="number"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantidade_cameras">Qual tipo de câmera?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipo_CFTV" id="radio16" value="IP">
+                            <label class="form-check-label" for="radio16">
+                                IP
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipo_CFTV" id="radio17" value="Analógico" checked>
+                            <label class="form-check-label" for="radio17">
+                                Analógico
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ha_racks">Tem rack atualmente?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ha_racks" id="radio24" value="Sim" checked>
+                            <label class="form-check-label" for="radio24">
+                                Sim
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ha_racks" id="radio25" value="Não">
+                            <label class="form-check-label" for="radio25">
+                                Não
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Qual o nível de qualidade da organização do rack?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_rack" id="radio26" value="Boa">
+                            <label class="form-check-label" for="radio26">
+                                Boa
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_rack" id="radio27" value="Mediana">
+                            <label class="form-check-label" for="radio27">
+                                Mediana
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_rack" id="radio28" value="Ruim" checked>
+                            <label class="form-check-label" for="radio28">
+                                Ruim
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantidade_gravadores">Quantos gravadores atualmente?</label>
+                        <input class="form-control" id="quantidade_gravadores" type="number"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantidade_cameras">Qual o nível de qualidade do cabeamento e conectores?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_cabeamento_CFTV" id="radio18" value="Boa">
+                            <label class="form-check-label" for="radio19">
+                                Boa
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_cabeamento_CFTV" id="radio19" value="Mediana" >
+                            <label class="form-check-label" for="radio19">
+                                Mediana
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_cabeamento_CFTV" id="radio20" value="Ruim" checked>
+                            <label class="form-check-label" for="radio20">
+                                Ruim
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Qual o nível de qualidade da infraestrutura?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_infra" id="radio29" value="Boa">
+                            <label class="form-check-label" for="radio29">
+                                Boa
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_infra" id="radio30" value="Mediana">
+                            <label class="form-check-label" for="radio30">
+                                Mediana
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_infra" id="radio31" value="Ruim" checked>
+                            <label class="form-check-label" for="radio31">
+                                Ruim
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantidade_cameras">Qual o nível de qualidade das imagens?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_imagem_CFTV" id="radio21" value="Boa">
+                            <label class="form-check-label" for="radio19">
+                                Boa
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_imagem_CFTV" id="radio22" value="Mediana">
+                            <label class="form-check-label" for="radio19">
+                                Mediana
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="qualidade_imagem_CFTV" id="radio23" value="Ruim" checked>
+                            <label class="form-check-label" for="radio20">
+                                Ruim
+                            </label>
+                        </div>
+                    </div>
+                    <hr/>
+                    <h3 class="text-center">
+                        Projetos
+                    </h3>
+                    <div class="text-center mt-2">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cftv-modal">Adicionar projeto</button>
+                    </div>
+                    <div class="d-flex justify-content-center flex-wrap" id="projetos_CFTV">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="detalhes_CFTV">Mais detalhes:</label>
+                        <textarea class="form-control" id="detalhes_CFTV" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="panel-REDES">
+                <a href="#REDES" class="d-block card-header py-3" data-toggle="collapse"
+                role="button" aria-expanded="true" aria-controls="collapseCardExample{{demanda.id}}">
+                    <h6 class="m-0 font-weight-bold text-primary">REDES</h6>
+                </a>
+                <div class="collapse card-body" id="REDES">
+                    <div class="form-group">
+                        <label for="prestadora_redes">Prestadora atual:</label>
+                        <input class="form-control" id="prestadora_rdes" type="text"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="REDES_tempo_problema">Há quantos anos tem esse problema</label>
+                        <input class="form-control" id="REDES_tempo_problema" type="number"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantidade_pontos">Quantos pontos existem no local atualmente?</label>
+                        <input class="form-control" id="quantidade_pontos" type="number"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantidade_cameras">O sinal de internet cobre todos os pontos desejados?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="REDES_sinal" id="radio37" value="Sim">
+                            <label class="form-check-label" for="radio37">
+                                Sim
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="REDES_sinal" id="radio38" value="Não" checked>
+                            <label class="form-check-label" for="radio38">
+                                Não
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ha_racks">Tem rack atualmente?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="REDES_rack" id="radio39" value="Sim" checked>
+                            <label class="form-check-label" for="radio39">
+                                Sim
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="REDES_rack" id="radio40" value="Não">
+                            <label class="form-check-label" for="radio40">
+                                Não
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Qual o nível de qualidade da organização do rack?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="REDES_qualidade_rack" id="radio41" value="Boa">
+                            <label class="form-check-label" for="radio41">
+                                Boa
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="REDES_qualidade_rack" id="radio42" value="Mediana">
+                            <label class="form-check-label" for="radio42">
+                                Mediana
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="REDES_qualidade_rack" id="radio43" value="Ruim" checked>
+                            <label class="form-check-label" for="radio43">
+                                Ruim
+                            </label>
+                        </div>
+                    </div>
+   
+                    <div class="form-group">
+                        <label>Qual o nível de qualidade da infraestrutura?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="REDES_qualidade_infra" id="radio44" value="Boa">
+                            <label class="form-check-label" for="radio44">
+                                Boa
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="REDES_qualidade_infra" id="radio45" value="Mediana">
+                            <label class="form-check-label" for="radio45">
+                                Mediana
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="REDES_qualidade_infra" id="radio46" value="Ruim" checked>
+                            <label class="form-check-label" for="radio46">
+                                Ruim
+                            </label>
+                        </div>
+                    </div>
+                    <hr/>
+                    <h3 class="text-center">
+                        Projetos
+                    </h3>
+                    <div class="text-center mt-2">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#redes-modal">Adicionar projeto</button>
+                    </div>
+                    <div class="d-flex justify-content-center flex-wrap" id="projetos_REDES">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="detalhes_REDES">Mais detalhes:</label>
+                        <textarea class="form-control" id="detalhes_REDES" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn_form" class="btn btn-primary btn-icon-split" type="button"> <span class="icon text-white-50">
+                    <i class="fas fa-save"></i> </span>
+                <span class="text">Salvar Visita</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adicionar projeto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="proj_equip_ent_ped">Entrada de pedestres:</label>
+                            <select class="form-control" id="proj_equip_ent_ped">
+                              <option value="Terminal facial">Facial</option>
+                              <option value="Manual">Manual</option>
+                              <option value="Antena TAG">TAG</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="quant_proj_equip_ent_ped">Quantidade?</label>
+                            <input class="form-control" id="quant_proj_equip_ent_ped" type="number"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="proj_equip_sai_ped">Saída de pedestres:</label>
+                            <select class="form-control" id="proj_equip_sai_ped">
+                              <option value="Terminal Facial">Facial</option>
+                              <option value="Botoeira">Botoeira</option>
+                              <option value="Antena TAG">TAG</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="quant_proj_equip_sai_ped">Quantidade?</label>
+                            <input class="form-control" id="quant_proj_equip_sai_ped" type="number"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="proj_CA_Eletroima">Com eletroimã?:</label>
+                    <select class="form-control" id="proj_CA_Eletroima">
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="proj_equip_ent_vei">Entrada de veículos</label>
+                            <select class="form-control" id="proj_equip_ent_vei">
+                              <option value="LPR">LPR</option>
+                              <option value="Antena TAG">TAG</option>
+                              <option value="Controle Remoto">Controle Remoto</option>
+                              <option value="Facial">Facial</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="quant_proj_equip_ent_vei">Quantidade?</label>
+                            <input class="form-control" id="quant_proj_equip_ent_vei" type="number"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="proj_equip_sai_vei">Saída de veículos:</label>
+                            <select class="form-control" id="proj_equip_sai_vei">
+                              <option value="LPR">LPR</option>
+                              <option value="Laço indutivo">Laço metálico</option>
+                              <option value="Controle remoto">Controle Remoto</option>
+                              <option value="Manual">Manual</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="quant_proj_equip_sai_vei">Quantidade?</label>
+                            <input class="form-control" id="quant_proj_equip_sai_vei" type="number"></input>
+                        </div>
+                    </div>
+                </div>     
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button id="btn_add_proj_CA" type="button" class="btn btn-primary" data-dismiss="modal">Adicionar projeto</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cftv-modal" tabindex="-1" role="dialog" aria-labelledby="modal_CFTVLABEL" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modal_CFTVLABEL">Adicionar projeto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="quant_proj_CFTV">Quantas câmeras?</label>
+                    <input class="form-control" id="quant_proj_CFTV" type="number"></input>
+                </div>
+                <label >Qual o tipo de sistema?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tipo_CFTV_proj" id="radio32" value="IP" checked>
+                    <label class="form-check-label" for="radio32">
+                        IP
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tipo_CFTV_proj" id="radio33" value="Analógico">
+                    <label class="form-check-label" for="radio33">
+                        Analógico
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tipo_CFTV_proj" id="radio34" value="Híbrido">
+                    <label class="form-check-label" for="radio34">
+                        Híbrido
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="quant_gravadores_proj_CFTV">Quantos gravadores?</label>
+                    <input class="form-control" id="quant_gravadores_proj_CFTV" type="number"></input>
+                </div>
+                <div class="form-group">
+                    <label for="tem_rack_proj_CFTV">Com rack?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tem_rack_proj_CFTV" id="radio35" value="Sim">
+                        <label class="form-check-label" for="radio35">
+                            Sim
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tem_rack_proj_CFTV" id="radio36" value="Não">
+                        <label class="form-check-label" for="radio36">
+                            Não
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button id="btn_add_proj_CFTV" type="button" class="btn btn-primary" data-dismiss="modal">Adicionar projeto</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="redes-modal" tabindex="-1" role="dialog" aria-labelledby="modal_REDESLABEL" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modal_CFTVLABEL">Adicionar projeto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="quant_proj_CFTV">Quantos pontos?</label>
+                    <input class="form-control" id="quant_proj_redes" type="number"></input>
+                </div>
+                <div class="form-group">
+                    <label for="quant_gravadores_proj_CFTV">Quantos Access Point?</label>
+                    <input class="form-control" id="quant_access_point_redes" type="number"></input>
+                </div>
+                <div class="form-group">
+                    <label for="tem_rack_proj_redes">Com rack?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tem_rack_proj_redes" id="radio47" value="Sim">
+                        <label class="form-check-label" for="radio47">
+                            Sim
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tem_rack_proj_redes" id="radio48" value="Não">
+                        <label class="form-check-label" for="radio48">
+                            Não
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button id="btn_add_proj_redes" type="button" class="btn btn-primary" data-dismiss="modal">Adicionar projeto</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    
+    {% endblock  %}
+
+    {% block dependencias %}
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            $(document).ready(function() {
+                $('#cliente1').select2();
+            });
+
+            $(document).ready(function(){
+                $('#numero1').mask('(00) 00000-0000', {placeholder: '(00) 00000-0000'})
+            })
+        </script>
+
+        <link rel="stylesheet" href="{% static 'css/toggle-panel.css' %}">
+        <link rel="stylesheet" href="{% static 'css/toggle-header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/toggle-content.css' %}">
+        <link rel="stylesheet" href="{% static 'css/op-form.css' %}">    
+        <script src="{% static 'js/toggle.js' %}"></script>
+        <script src="{% static 'js/op-form.js' %}"></script>
+        <script src="{% static 'js/proj_CA.js' %}"></script>
+        <script src="{% static 'js/proj_CFTV.js' %}"></script>
+        <script src="{% static 'js/proj_REDES.js' %}"></script>
+        <script src="{% static 'js/form_CA.js' %}"></script>
+        <script src="{% static 'js/form_CFTV.js' %}"></script>
+        <script src="{% static 'js/form_REDES.js' %}"></script>
+        <script src="{% static 'js/sendInfo.js' %}"></script>
+    {%endblock %}
+

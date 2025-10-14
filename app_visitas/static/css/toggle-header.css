@@ -1,0 +1,23 @@
+.toggle-header {
+    background-color: #F3F3F3;
+    font-weight: bold;
+    padding: 0.8em;
+    cursor: pointer;
+    position: relative;
+}
+
+.toggle-header:hover {
+    background-color: #E7E7E9;
+}
+
+.icone-seta {
+    position: absolute;
+    right: 10px;
+    top: 0.9em;
+    width: 19px;
+    transition: 0.7s;
+}
+
+.icone-seta-cima {
+    transform: rotate(180deg);
+}

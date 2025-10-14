@@ -1,0 +1,11 @@
+.op-form {
+    cursor: pointer;
+    border: 2px solid #01a4ad;
+    border-radius: 5px;
+}
+
+.op-form-active {
+    background-color: #01a4ad;
+    color: white;
+    display: block;
+}

@@ -1,0 +1,5 @@
+| Pri | User Story | Critérios de Aceitação | Critérios de Qualidade | Est | Sprint |
+| :-- | :--- | :--- | :--- | :-: | :----: |
+| P1 | Como Closer, quero cadastrar um novo cliente para ter seus dados salvos no sistema. | - Formulário com os campos de cliente.<br>- Cliente salvo no banco de dados. | - Uso do ModelForm do Django para segurança e clareza.<br>- Nomenclatura descritiva. | 3h | 1 |
+| P1 | Como Closer, quero ver uma lista de todos os clientes para poder acessá-los. | - Página que exibe todos os clientes em ordem alfabética.<br>- Cada cliente é um link para sua página de detalhes. | - Separação clara entre a lógica (views.py) e a apresentação (template.html).<br>- A função de listagem é reutilizável. | 2h | 1 |
+| P1 | Como Closer, quero registrar uma nova visita para um cliente específico. | - Formulário seleciona um cliente existente.<br>- Salva as anotações no banco.<br>- Associa a visita ao usuário logado. | - Uso de JavaScript assíncrono (fetch) para envio.<br>- Endpoint da view tem responsabilidade única de salvar a visita. | 5h | 1 |

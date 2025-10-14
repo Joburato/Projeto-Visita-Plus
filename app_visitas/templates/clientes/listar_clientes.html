@@ -1,0 +1,25 @@
+{% extends 'template.html' %}
+
+{% block title %}Lista de Clientes{% endblock %}
+
+{% block content %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Clientes Cadastrados</h6>
+        <a href="{% url 'criar-cliente' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i> Novo Cliente
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="list-group">
+            {% for cliente in clientes %}
+                <a href="{% url 'detalhe-cliente' cliente.id %}" class="list-group-item list-group-item-action">
+                    {{ cliente.nome }} - ({{ cliente.empresa }})
+                </a>
+            {% empty %}
+                <p class="text-center">Nenhum cliente cadastrado ainda.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
