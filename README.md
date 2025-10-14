@@ -1,15 +1,3 @@
-# Projeto-Visita-Plus
-Projeto criado para  DIM0501 -  BOAS PRÁTICAS DE PROGRAMAÇÃO  - T04 (2025.2) 
-
-
-Com certeza\! Um bom `README.md` é a porta de entrada para qualquer projeto no GitHub. Ele precisa ser claro, informativo e guiar o visitante para os pontos mais importantes.
-
-Preparei um `README.md` completo e profissional para o seu projeto, já incluindo os links para os documentos e para o vídeo, conforme você pediu.
-
-Basta copiar o texto abaixo e colar em um novo arquivo chamado `README.md` na raiz do seu projeto no GitHub.
-
------
-
 # Visita+ | App de Visitas Comerciais
 
 Projeto acadêmico desenvolvido para a disciplina de **Boas Práticas de Programação (BPP) - 2025.2**. O objetivo foi construir uma aplicação web (MVP) aplicando os princípios de Código Limpo, realizar a análise de qualidade do código com ferramentas de mercado e documentar todo o processo de refatoração.
@@ -21,8 +9,6 @@ Projeto acadêmico desenvolvido para a disciplina de **Boas Práticas de Program
 Assista à apresentação completa do projeto, demonstração do MVP e análise das refatorações realizadas no YouTube:
 
 **[Clique aqui para assistir ao vídeo de apresentação](https://www.youtube.com/watch?v=SEU_LINK_AQUI)**
-
-*(Substitua `https://www.youtube.com/watch?v=SEU_LINK_AQUI` pelo link real do seu vídeo)*
 
 -----
 
