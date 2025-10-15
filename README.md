@@ -8,7 +8,7 @@ Projeto acadêmico desenvolvido para a disciplina de **Boas Práticas de Program
 
 Assista à apresentação completa do projeto, demonstração do MVP e análise das refatorações realizadas no YouTube:
 
-**[Clique aqui para assistir ao vídeo de apresentação](https://www.youtube.com/watch?v=SEU_LINK_AQUI)**
+**[Clique aqui para assistir ao vídeo de apresentação](https://youtu.be/rIwAM88mAHU)**
 
 -----
 
