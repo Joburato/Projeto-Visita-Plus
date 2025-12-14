@@ -41,7 +41,7 @@ def detalhe_cliente(request: HttpRequest, cliente_id: int) -> HttpResponse:
         A página renderizada com os detalhes do cliente.
     """
     cliente = get_object_or_404(Cliente, id=cliente_id)
-    visitas_do_cliente = cliente.visitas.all().order_by("-data_visita")
+    visitas_do_cliente = cliente.visitas.select_related('closer').all().order_by("-data_visita")
     contexto = {"cliente": cliente, "visitas": visitas_do_cliente}
     return render(request, "clientes/detalhe_cliente.html", contexto)
 
@@ -82,7 +82,8 @@ def nova_visita(request: HttpRequest) -> HttpResponse | JsonResponse:
         Uma página HTML para requisições GET ou uma resposta JSON para POST.
     """
     if request.method == "GET":
-        clientes_do_banco = Cliente.objects.all().order_by("nome")
+        clientes_do_banco = Cliente.objects.only('id', 'nome', 'empresa').order_by("nome")
+        
         contexto = {"cards": clientes_do_banco}
         return render(request, "visita_comercial.html", contexto)
 
