@@ -109,19 +109,20 @@ Este projeto utiliza **Pytest** para garantir a qualidade do código. Siga os pa
 ### 1\. Rodar toda a suite de testes (13 testes)
 
 Volte para a raiz do projeto (onde está o arquivo pytest.ini) e execute:
-
-pytest  
-
+  ```bash
+  pytest  
+  ```
 ### 2\. Verificar a Cobertura de Código (Coverage)
 
 Para gerar o relatório de cobertura com análise de branches:
-
-coverage run --branch -m pytest  
-coverage report # Visualizar no terminal  
-coverage html # Gerar relatório visual na pasta htmlcov/  
-
+  ```bash
+  coverage run --branch -m pytest  
+  coverage report # Visualizar no terminal  
+  coverage html # Gerar relatório visual na pasta htmlcov/  
+  ```
 ### 3\. Executar Teste de Performance (Carga)
 
 Para simular o banco de dados com 5.000 registros e medir os tempos de resposta:
-
+```bash
 python teste_performance.py
+```
