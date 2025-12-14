@@ -101,3 +101,27 @@ Siga os passos abaixo para configurar e rodar a aplicação no seu ambiente de d
     ```bash
     python manage.py runserver
     ```
+
+## 🧪 Como Executar os Testes Automatizados
+
+Este projeto utiliza **Pytest** para garantir a qualidade do código. Siga os passos abaixo para validar a aplicação:
+
+### 1\. Rodar toda a suite de testes (13 testes)
+
+Volte para a raiz do projeto (onde está o arquivo pytest.ini) e execute:
+
+pytest  
+
+### 2\. Verificar a Cobertura de Código (Coverage)
+
+Para gerar o relatório de cobertura com análise de branches:
+
+coverage run --branch -m pytest  
+coverage report # Visualizar no terminal  
+coverage html # Gerar relatório visual na pasta htmlcov/  
+
+### 3\. Executar Teste de Performance (Carga)
+
+Para simular o banco de dados com 5.000 registros e medir os tempos de resposta:
+
+python teste_performance.py
