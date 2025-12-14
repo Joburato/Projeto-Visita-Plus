@@ -1,103 +1,103 @@
 # Visita+ | App de Visitas Comerciais
 
-Projeto acadêmico desenvolvido para a disciplina de **Boas Práticas de Programação (BPP) - 2025.2**.
+Projeto acadêmico desenvolvido para a disciplina de **Boas Práticas de Programação (BPP) - 2025.2**. O objetivo foi construir uma aplicação web (MVP) aplicando os princípios de Código Limpo, realizar a análise de qualidade do código com ferramentas de mercado e documentar todo o processo de refatoração.
 
-Este repositório contém o código fonte final (Entrega U3), focado na implementação de testes automatizados, análise de cobertura, correção de bugs e otimização de performance.
+-----
 
 ## 🎥 Vídeo de Apresentação
 
-Assista à apresentação técnica da Entrega U3, demonstrando a execução dos testes, as métricas de cobertura e as otimizações de performance realizadas:
+Assista à apresentação completa do projeto, demonstração do MVP e análise das refatorações realizadas no YouTube:
 
-[**Clique aqui para assistir ao vídeo de apresentação**](https://youtu.be/rIwAM88mAHU)
+**[Clique aqui para assistir ao vídeo de apresentação](https://youtu.be/rIwAM88mAHU)**
 
-## 📚 Documentação Técnica (Entrega U3)
+-----
 
-A documentação detalhada exigida para a Unidade 3 encontra-se na pasta docs/.
+## 📄 Documentação do Projeto
 
-| **Documento** | **Descrição** | **Arquivo** |
-| --- | --- | --- |
-| **Relatório Geral de Testes** | Visão geral da suite de testes, estatísticas e resumo da qualidade. | [Ler Relatório](https://www.google.com/search?q=./docs/testing-report.md) |
-| --- | --- | --- |
-| **Relatório de Cobertura** | Análise detalhada da cobertura de código (Linhas e Branches) com evolução. | [Ler Relatório](https://www.google.com/search?q=./docs/coverage-report.md) |
-| --- | --- | --- |
-| **Log de Depuração** | Registro dos 3 bugs críticos encontrados, investigados e corrigidos. | [Ler Log](https://www.google.com/search?q=./docs/debugging-log.md) |
-| --- | --- | --- |
-| **Análise de Performance** | Estudo dos gargalos (N+1, Memória) e benchmarks das otimizações. | [Ler Análise](https://www.google.com/search?q=./docs/performance-analysis.md) |
-| --- | --- | --- |
+Toda a documentação estratégica e de análise de qualidade do projeto está disponível nos arquivos PDF abaixo.
+
+| Documento | Descrição | Link |
+|---|---|---|
+| **Visão do Produto** | Detalha o propósito, o público-alvo, o problema a ser resolvido e a proposta de valor do projeto. | [Acessar Visão do Produto.pdf](./Visão%20do%20Produto.pdf) |
+| **Product Backlog** | Apresenta as histórias de usuário que compõem o MVP e as tarefas técnicas de análise e refatoração. | [Acessar Product Backlog.pdf](./Product%20Backlog.pdf) |
+| **Relatório de Qualidade** | Documento final que consolida a aplicação dos princípios de Código Limpo, os *code smells* identificados e as refatorações realizadas. | [Acessar Relatório de Qualidade de Código.pdf](./Relatório%20de%20Qualidade%20de%20Código.pdf) |
+
+-----
 
 ## 🚀 Sobre o Projeto
 
-O **Visita+** é uma aplicação web em Django projetada para Closers (vendedores) e gestores comerciais. A ferramenta resolve a dificuldade de registrar informações de visitas técnicas de forma rápida e estruturada.
+O **Visita+** é uma aplicação web em Django projetada para Closers (vendedores) e gestores comerciais. A ferramenta resolve um problema comum no setor de vendas: a dificuldade de registrar informações de visitas a clientes de forma rápida, estruturada e centralizada.
+
+Diferente de CRMs complexos, o Visita+ foca na agilidade, permitindo que o vendedor preencha um formulário inteligente e salve os dados da visita em um banco de dados próprio, facilitando a consulta posterior do histórico de interações.
 
 ### Funcionalidades Principais
 
-- **Gestão de Clientes**: CRUD completo.
-- **Registro de Visitas**: Formulário detalhado com validação.
-- **Histórico Otimizado**: Visualização cronológica de interações (Performance O(1)).
-- **Autenticação**: Controle de acesso seguro.
+  - **Gestão de Clientes**: CRUD completo para criar, visualizar, atualizar e deletar clientes.
+  - **Registro de Visitas**: Formulário detalhado para registrar as informações de uma nova visita, associando-a a um cliente e ao usuário logado.
+  - **Histórico Centralizado**: Cada cliente possui uma página de detalhes que exibe todo o histórico de visitas em ordem cronológica.
+  - **Autenticação**: Sistema de login para garantir que apenas usuários autorizados acessem os dados.
+
+-----
 
 ## 🛠️ Como Executar o Projeto Localmente
 
+Siga os passos abaixo para configurar e rodar a aplicação no seu ambiente de desenvolvimento.
+
 ### Pré-requisitos
 
-- Python 3.10+
-- Pip
+  - Python 3.10+
+  - Pip (gerenciador de pacotes do Python)
 
-### Instalação e Execução
+### Passos para Instalação
 
-- **Clone o repositório:**  
-    git clone \[<https://github.com/seu-usuario/visita-plus.git\>](<https://github.com/seu-usuario/visita-plus.git>)  
-    cd visita-plus  
+1.  **Clone o repositório:**
 
-- **Crie e ative o ambiente virtual:**  
-    python -m venv venv  
-    \# Windows:  
-    .\\venv\\Scripts\\activate  
-    \# Linux/Mac:  
-    source venv/bin/activate  
+    ```bash
+    git clone https://github.com/seu-usuario/seu-repositorio.git
+    cd seu-repositorio
+    ```
 
-- **Instale as dependências (incluindo ferramentas de teste):**  
-    pip install -r requirements.txt  
+2.  **Crie um ambiente virtual (recomendado):**
 
-- **Prepare o Banco de Dados:**  
-    cd src # Importante: O manage.py está na pasta src/  
-    python manage.py migrate  
-    python manage.py createsuperuser  
+    ```bash
+    python -m venv venv
+    ```
 
-- **Execute o Servidor:**  
-    python manage.py runserver  
-    <br/>Acesse: <http://127.0.0.1:8000>
+3.  **Ative o ambiente virtual:**
 
-## 🧪 Como Executar os Testes Automatizados
+      - No Windows:
+        ```bash
+        .\venv\Scripts\activate
+        ```
+      - No macOS/Linux:
+        ```bash
+        source venv/bin/activate
+        ```
 
-Este projeto utiliza **Pytest** para garantir a qualidade do código. Siga os passos abaixo para validar a aplicação:
+4.  **Instale as dependências:**
 
-### 1\. Rodar toda a suite de testes (13 testes)
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Volte para a raiz do projeto (onde está o arquivo pytest.ini) e execute:
+    *(Nota: Crie um arquivo `requirements.txt` com o comando `pip freeze > requirements.txt` no seu projeto)*
 
-pytest  
+5.  **Aplique as migrações do banco de dados:**
 
-### 2\. Verificar a Cobertura de Código (Coverage)
+    ```bash
+    python manage.py migrate
+    ```
 
-Para gerar o relatório de cobertura com análise de branches:
+6.  **Crie um superusuário para acessar o sistema:**
 
-coverage run --branch -m pytest  
-coverage report # Visualizar no terminal  
-coverage html # Gerar relatório visual na pasta htmlcov/  
+    ```bash
+    python manage.py createsuperuser
+    ```
 
-### 3\. Executar Teste de Performance (Carga)
+    (Siga as instruções para criar seu usuário e senha)
 
-Para simular o banco de dados com 5.000 registros e medir os tempos de resposta:
+7.  **Execute o servidor de desenvolvimento:**
 
-python teste_performance.py  
-
-## 📂 Estrutura do Projeto
-
-u3-visita-plus/  
-├── docs/ # Relatórios de Qualidade (Markdown)  
-├── src/ # Código Fonte Django (Refatorado e Otimizado)  
-│ ├── app_visitas/ # App Principal  
-│ └── manage.py  
-├── tests/ # Suite de Testes Automatizados (Unitários)  
-└── requirements.txt # Dependências do Projeto
+    ```bash
+    python manage.py runserver
+    ```
